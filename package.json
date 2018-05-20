@@ -1,0 +1,38 @@
+{
+  "name": "htom",
+  "version": "1.0.0",
+  "description": "covert html to markdown",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "npm run build && cd ./test && jest htom.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamcco/htom.git"
+  },
+  "keywords": [
+    "html",
+    "covert",
+    "markdown"
+  ],
+  "author": "ooiss@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamcco/htom/issues"
+  },
+  "homepage": "https://github.com/iamcco/htom#readme",
+  "dependencies": {
+    "htmlparser2": "^3.9.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^22.4.4",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
+  }
+}

@@ -2,7 +2,7 @@
   "name": "htom",
   "version": "1.0.0",
   "description": "convert html to markdown",
-  "main": "./dist/bundle.js",
+  "main": "./lib/index.js",
   "scripts": {
     "build": "webpack",
     "test": "npm run build && cd ./test && jest htom.test.js"

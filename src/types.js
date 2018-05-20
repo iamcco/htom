@@ -13,7 +13,9 @@ export const common = {
     common.data = [];
   },
   markdown: () => {
-    return common.data.reverse().join('').trim();
+    const md = common.data.reverse().join('').trim();
+    common.reset();
+    return md;
   }
 };
 
@@ -55,6 +57,7 @@ export const table = {
         md += headLine;
       }
     });
+    table.reset();
     return md;
   },
   reset: () => {
@@ -78,7 +81,9 @@ export const anchor = {
     anchor.href = [];
   },
   markdown: () => {
-    return `[${anchor.data.reverse().join('')}][${anchor.href}]`;
+    const md = `[${anchor.data.reverse().join('')}][${anchor.href}]`;
+    anchor.reset();
+    return md;
   }
 };
 

@@ -390,7 +390,6 @@ const tableTags = () => ({
     popToken(name);
     append(table.markdown());
     blankLine();
-    table.reset();
   },
   tropen: () => {
     table.data.unshift([]);
@@ -428,7 +427,6 @@ const aTag = () => ({
     currentType.shift();
     popToken(name);
     append(anchor.markdown());
-    anchor.reset();
   }
 });
 
@@ -503,8 +501,11 @@ export default (res, rej) => ({
       tagsHandlers[fn](text);
     }
   },
-  onreset: reset,
   onerror: (e) => rej(e),
-  onend: () => res(`${getCurrentType().markdown()}${getAnchorsReference()}`)
+  onend: () => {
+    const md = `${getCurrentType().markdown()}${getAnchorsReference()}`;
+    reset();
+    return res(md);
+  }
 });
 

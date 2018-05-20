@@ -22,7 +22,7 @@ npm install htom
 **usage**
 
 ```javascript
-const htom = require('htom');
+const htom = require('htom').default;
 
 htom('<h1> test html </h1>').then(markdown => console.log(markdown));
 ```

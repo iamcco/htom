@@ -413,7 +413,11 @@ const tableTags = () => ({
   ...(['th', 'td'].reduce((res, tag) => ({
     ...res,
     [`${tag}open`]: (name) => {
-      table.data[0].unshift([]);
+      if (table.data[0]) {
+        table.data[0].unshift([]);
+      } else {
+        table.data.unshift([]);
+      }
       pushToken(name);
     },
     [`${tag}text`]: takeText,

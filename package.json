@@ -1,6 +1,6 @@
 {
   "name": "htom",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "convert html to markdown",
   "main": "./lib/index.js",
   "scripts": {

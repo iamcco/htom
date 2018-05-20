@@ -20,12 +20,21 @@ export const common = {
 };
 
 export const table = {
+  extra: [],
   data: [],
   append: (text) => {
-    table.data[0][0].unshift(text);
+    if (table.data[0] && table.data[0][0]) {
+      table.data[0][0].unshift(text);
+    } else {
+      table.extra.unshift(text);
+    }
   },
   pop: () => {
-    table.data[0][0].shift();
+    if (table.data[0] && table.data[0][0]) {
+      table.data[0][0].shift();
+    } else {
+      table.extra.shift();
+    }
   },
   lastText: () => table.data[0] && table.data[0][0],
   markdown: () => {
@@ -57,10 +66,14 @@ export const table = {
         md += headLine;
       }
     });
+    if (table.extra.length) {
+      md = `${table.extra.reverse().join('')}\n\n${md}`;
+    }
     table.reset();
     return md;
   },
   reset: () => {
+    table.extra = [];
     table.data = [];
     table.isHasHead = false;
   }

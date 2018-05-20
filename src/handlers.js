@@ -440,6 +440,7 @@ const tagsHandlers = {
   ...decorationTag('em', '*'),
   ...decorationTag('del', '~~'),
   ...decorationTag('strong', '**'),
+  ...decorationTag('caption', '**'),
   // pre tag
   ...preTag(),
   // code tag

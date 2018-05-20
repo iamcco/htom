@@ -292,10 +292,11 @@ const listTag = (tag) => ({
  * @returns {object}
  */
 const preTag = () => ({
-  preopen: (name) => {
+  preopen: (name, attribute) => {
     pushToken(name);
     blankLine();
-    append('```');
+    let language = attribute['data-language'] || '';
+    append(`${'```'}${language}`);
     newLine();
   },
   pretext: takeText,

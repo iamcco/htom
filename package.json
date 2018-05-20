@@ -1,7 +1,7 @@
 {
   "name": "htom",
   "version": "1.0.0",
-  "description": "covert html to markdown",
+  "description": "convert html to markdown",
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack",
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "html",
-    "covert",
+    "convert",
     "markdown"
   ],
   "author": "ooiss@qq.com",

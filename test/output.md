@@ -33,7 +33,7 @@ git commit
 
 ```
 
-This site was built using [Github Pages][1].
+This site was built using [Github Pages][7].
 
 ### ul list
 
@@ -70,4 +70,10 @@ This site was built using [Github Pages][1].
 | testFuncName | function | test get the property of the key |
 | setFunc      | function | set the property of the key      |
 
-[1]: https://pages.github.com
+[7]: https://pages.github.com
+[The fifth heading]: the-fifth-heading
+[The fourth heading]: the-fourth-heading
+[The largest heading]: the-largest-heading
+[The second largest heading]: the-second-largest-heading
+[The smallest heading]: the-smallest-heading
+[The thrid heading]: the-thrid-heading

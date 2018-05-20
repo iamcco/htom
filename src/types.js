@@ -91,7 +91,7 @@ export const anchor = {
   lastText: () => anchor.data[0],
   reset: () => {
     anchor.data = [];
-    anchor.href = [];
+    anchor.href = '';
   },
   markdown: () => {
     const md = `[${anchor.data.reverse().join('')}][${anchor.href}]`;
@@ -100,3 +100,23 @@ export const anchor = {
   }
 };
 
+export const header = {
+  data: [],
+  id: '',
+  append: (text) => {
+    header.data.unshift(text);
+  },
+  pop: () => {
+    header.data.shift();
+  },
+  lastText: () => header.data[0],
+  reset: () => {
+    header.data = [];
+    header.id = '';
+  },
+  markdown: () => {
+    const md = header.data.reverse().join('');
+    header.reset();
+    return md;
+  }
+};

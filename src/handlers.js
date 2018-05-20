@@ -3,7 +3,7 @@
  */
 
 import { trim } from './util';
-import { common, table, anchor } from './types';
+import { common, table, anchor, header } from './types';
 
 const NEW_LINE = '\n';
 const BLANK_LINE = '\n\n';
@@ -44,11 +44,13 @@ const reset = () => {
  *
  * @returns {string}
  */
-const getAnchorsReference = () =>
-  Object.keys(anchors).reduce(
-    (res, href) => `${res}\n[${anchors[href]}]: ${href}`,
+const getAnchorsReference = () => {
+  const n = Object.keys(anchors).reduce((res, key) => ({...res, [anchors[key]]: key}), {});
+  return Object.keys(n).sort().reduce(
+    (res, key) => `${res}\n[${key}]: ${n[key]}`,
     '\n'
   );
+};
 
 /**
  * current item
@@ -61,6 +63,8 @@ const getCurrentType = () => {
       return anchor;
     case 'table':
       return table;
+    case 'header':
+      return header;
     default:
       return common;
   }
@@ -181,10 +185,12 @@ const closeTag = (endSymbol = '') => (name) => {
  * @param {number} level
  * @returns {function}
  */
-const headOpen = (level) => (name) => {
-  pushToken(name);
+const headOpen = (level) => (name, attribute) => {
   blankLine();
   append(`${Array(level + 1).join('#')} `);
+  pushToken(name);
+  header.id = attribute.id;
+  currentType.unshift('header');
 };
 
 /**
@@ -197,7 +203,17 @@ const headOpen = (level) => (name) => {
 const headTag = (tag, level) => ({
   [`${tag}open`]: headOpen(level),
   [`${tag}text`]: takeText,
-  [`${tag}close`]: closeTag(BLANK_LINE)
+  [`${tag}close`]: (name) => {
+    currentType.shift();
+    popToken(name);
+    const id = header.id;
+    const md = header.markdown();
+    append(md);
+    blankLine();
+    if (id) {
+      anchors[id] = md;
+    }
+  }
 });
 
 /**
